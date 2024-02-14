@@ -1,0 +1,63 @@
+.login_container{
+    width: 100%;
+    height: calc(100% - 50px);
+
+    /* 使用弹性布局，让内部元素垂直居中 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_dialog{
+    width: 400px;
+    height: 350px;
+    /* 背景颜色 */
+    background-color: pink;
+    border-radius: 15px;
+}
+
+.login_dialog h3{
+    /* 文字居中 */
+    text-align: center;
+    /* 行之间内边距距离 */
+    padding: 50px;
+}
+
+.login_dialog .row{
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_dialog .row span{
+    display: block;
+    width: 100px;
+    font-weight: 700;
+}
+
+#username, #password{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    text-indent: 10px;
+    border-radius: 10px; /*圆角*/
+    border: none; /*去除边框*/
+    outline: none;
+}
+
+#submit{
+    width: 300px;
+    height: 40px;
+    background-color:chocolate;
+    color: white;
+    border: none;  /*去除边框*/
+    font-size: 20px;
+    text-align: center;
+    border-radius: 10px; /*圆角*/
+}
+
+#submit:active{
+    background-color: aqua;
+}

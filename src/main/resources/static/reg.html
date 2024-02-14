@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/reg.css">
+    <script src="js/jquery.min.js"></script>
+    <title>注册</title>
+</head>
+<body>
+    <div class="nav">标仔在线聊天</div>
+    <div class="login_container">
+        <div class="login_dialog">
+            <h3>注册</h3>
+            <div class="row">
+                <span>用户名</span>
+                <input type="text" id="username">
+            </div>
+            <div class="row">
+                <span>手机号码</span>
+                <input type="text" id="phone">
+            </div>
+            <div class="row">
+                <span>邮箱</span>
+                <input type="text" id="email">
+            </div>
+            <div class="row">
+                <span>密码</span>
+                <input type="password" id="password">
+            </div>
+            <div class="row">
+                <span>确认密码</span>
+                <input type="password" id="password2">
+            </div>
+            <div class="row">
+                <button id="submit" onclick="reg()">注册</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function reg(){
+            // 获取输入框数据
+            var username = jQuery("#username");
+            var password = jQuery("#password");
+            var phone = jQuery("#phone");
+            var email = jQuery("#email");
+            var password2 = jQuery("#password2");
+
+            // 非空校验
+            if(username.val().trim() == ""){
+                alert("请输入用户名！");
+                // 聚焦光标
+                username.focus();
+                return false;
+            }
+            if(password.val().trim() == ""){
+                alert("请输入密码！");
+                // 聚焦光标
+                password.focus();
+                return false;
+            }
+            if(phone.val().trim() == ""){
+                alert("请输入电话号码！");
+                // 聚焦光标
+                phone.focus();
+                return false;
+            }
+            if(email.val().trim() == ""){
+                alert("请输入邮箱！");
+                // 聚焦光标
+                email.focus();
+                return false;
+            }
+            if(password2.val().trim() == ""){
+                alert("请再次确认密码！");
+                // 聚焦光标
+                password2.focus();
+                return false;
+            }
+            if(password.val() != password2.val()){
+                alert("两次密码不一致，请再次确认！");
+                // 聚焦光标
+                password2.focus();
+                return false;
+            }
+
+            jQuery.ajax({
+                url:"/user/reg",
+                type:"POST",
+                data:{
+                    "username":username.val().trim(),
+                    "password":password.val().trim(),
+                    "email":email.val().trim(),
+                    "phone":phone.val().trim()
+                },
+                success:function(res){
+                    if(res != null){
+                        alert("注册成功！");
+                        location.href = "login.html";
+                    }else{
+                        alert("注册失败：" + res.msg);
+                        location.href = location.href;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+/*去除浏览器默认样式*/
+*{
+    margin: 0; /* 外边距清除 */
+    padding: 0; /* 内边距清除 */
+    box-sizing: border-box;
+}
+
+/* 设定页面高度 */
+html, body{
+    height: 100%;
+}
+
+/* 设定导航栏样式 */
+.nav{
+    height: 50px; /*高度*/
+    background-color: bisque; /*背景颜色*/
+    color: black; /*文字颜色*/
+
+    /* 使用弹性布局, 让导航栏内部的元素, 垂直方向居中 */
+    display: flex;
+    align-items: center;
+    /* 让里面的元素距离左侧边框, 有点间隙 */
+    padding-left: 20px;
+}
